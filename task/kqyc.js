@@ -21,7 +21,7 @@ const data = {
         "startDate": first_day,
         "endDate": last_day,
         "displayType": "01",
-        "empId": conf.empId
+        "empId": kqyc.empId
     }
 };
 
