@@ -34,12 +34,12 @@ $task.fetch(myRequest).then(response => {
     console.log(response.body);
     try {
         const result = response.body;
-        const lateOrLeaveEarlyTimes = result.bo.abnormalAttendanceStatisticDTO.lateOrLeaveEarlyTimes;
-        const absenceTimes = result.bo.abnormalAttendanceStatisticDTO.absenceTimes;
-        console.log(lateOrLeaveEarlyTimes);
-        console.log(absenceTimes);
-        const msg_all = "缺席:" + absenceTimes + "次;" + "迟到早退:" + lateOrLeaveEarlyTimes + "次";
-        $notify("考勤异常", "", msg_all); // Success!
+        //const lateOrLeaveEarlyTimes = result.bo.abnormalAttendanceStatisticDTO.lateOrLeaveEarlyTimes;
+        //const absenceTimes = result.bo.abnormalAttendanceStatisticDTO.absenceTimes;
+        //console.log(lateOrLeaveEarlyTimes);
+        //console.log(absenceTimes);
+        //const msg_all = "缺席:" + absenceTimes + "次;" + "迟到早退:" + lateOrLeaveEarlyTimes + "次";
+        $notify("考勤异常", "", result); // Success!
     } catch (eor) {
         console.log(eor)
     }
