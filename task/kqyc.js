@@ -1,7 +1,7 @@
 
 const lu_conf = $prefs.valueForKey('lus_conf');
 console.log(lu_conf);
-console.log(111)
+console.log(666)
 const conf = lu_conf;
 const kqyc = conf.kqyc;
 const method = "POST";
