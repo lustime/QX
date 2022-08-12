@@ -35,7 +35,9 @@ $task.fetch(myRequest).then(response => {
     const result = response.body;
     var lateOrLeaveEarlyTimes = result.bo.abnormalAttendanceStatisticDTO.lateOrLeaveEarlyTimes;
     var absenceTimes = result.bo.abnormalAttendanceStatisticDTO.absenceTimes;
-    var msg_all = "缺席:" + absenceTimes + "次" + "\n" + "迟到早退:" + lateOrLeaveEarlyTimes + "次" + "\n";
+    console.log(lateOrLeaveEarlyTimes);
+    console.log(absenceTimes);
+    var msg_all = "缺席:" + absenceTimes + "次;" + "迟到早退:" + lateOrLeaveEarlyTimes + "次";
     $notify("考勤异常", "", msg_all); // Success!
     $done();
 }, reason => {
