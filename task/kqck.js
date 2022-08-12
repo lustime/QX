@@ -34,12 +34,11 @@ $task.fetch(myRequest).then(response => {
     console.log(response.body);
     try {
         const result = JSON.parse(response.body);
-        const lateOrLeaveEarlyTimes = result.bo.abnormalAttendanceStatisticDTO.lateOrLeaveEarlyTimes;
-        const absenceTimes = result.bo.abnormalAttendanceStatisticDTO.absenceTimes;
-        console.log(lateOrLeaveEarlyTimes);
-        console.log(absenceTimes);
-        const msg_all = "缺席:" + absenceTimes + "次;" + "迟到早退:" + lateOrLeaveEarlyTimes + "次";
-        $notify("考勤异常", "", result); // Success!
+        var msg_all = ''
+        msg_all = "本月上班" + realInWorkTimes + "天," + "异常考勤:" + abnormalAttendancTimes + "次" + "\n";
+        msg_all += "其中缺席:" + absenceTimes + "次" + "\n";
+        msg_all += "迟到早退:" + lateOrLeaveEarlyTimes + "次" + "\n";
+        $notify("考勤异常", "", msg_all); // Success!
     } catch (eor) {
         console.log(eor)
     }
