@@ -1,8 +1,5 @@
 const lu_conf = $prefs.valueForKey('lus_conf');
-console.log(lu_conf);
-console.log(666);
-const conf = eval('(' + lu_conf+ ')')
-console.log(conf)
+const conf = eval('(' + lu_conf + ')')
 const kqyc = conf.kqyc;
 const method = "POST";
 var date = new Date();
@@ -10,7 +7,7 @@ var year = date.getFullYear();
 var month = date.getMonth() + 1;
 var day = date.getDate();
 const first_day = year + '-' + month + '-' + '01';
-const last_day = year + '-' +month + '-' +day;
+const last_day = year + '-' + month + '-' + day;
 const data = {
     "command": "KQ-JG-002",
     "params": {
@@ -21,7 +18,7 @@ const data = {
         "startDate": first_day,
         "endDate": last_day,
         "displayType": "01",
-        "empId": kqyc.empId
+        "empId": conf.empId
     }
 };
 
@@ -35,7 +32,16 @@ const myRequest = {
 $task.fetch(myRequest).then(response => {
     // response.statusCode, response.headers, response.body
     console.log(response.body);
-    $notify("考勤异常", "", response.body); // Success!
+    const data = response.body;
+    var realInWorkTimes = data.bo.abnormalAttendanceStatisticDTO.realInWorkTimes;
+    var abnormalAttendancTimes = data.bo.abnormalAttendancTimes;
+    var lateOrLeaveEarlyTimes = data.bo.abnormalAttendanceStatisticDTO.lateOrLeaveEarlyTimes;
+    var absenceTimes = data.bo.abnormalAttendanceStatisticDTO.absenceTimes;
+    var msg_all = ''
+    msg_all = "本月上班" + realInWorkTimes + "天," + "异常考勤:" + abnormalAttendancTimes + "次" + "\n";
+    msg_all += "其中缺席:" + absenceTimes + "次" + "\n";
+    msg_all += "迟到早退:" + lateOrLeaveEarlyTimes + "次" + "\n";
+    $notify("考勤异常", "", msg_all); // Success!
     $done();
 }, reason => {
     // reason.error
