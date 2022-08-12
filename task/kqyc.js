@@ -1,6 +1,7 @@
-const lu_conf = $prefs.valueForKey('lus_conf') + '';
+const lu_conf = $prefs.valueForKey('lus_conf');
 console.log(lu_conf);
-const conf = lu_conf.parseJSON();
+console.log(666);
+const conf = eval('(' + lu_conf+ ')')
 console.log(conf)
 const kqyc = conf.kqyc;
 const method = "POST";
