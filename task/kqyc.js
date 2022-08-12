@@ -1,5 +1,4 @@
-
-const lu_conf = $prefs.valueForKey('lus_conf');
+const lu_conf = $prefs.valueForKey('lus_conf') + '';
 console.log(lu_conf);
 const conf = lu_conf.parseJSON();
 console.log(conf)
