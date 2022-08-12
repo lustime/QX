@@ -33,7 +33,7 @@ $task.fetch(myRequest).then(response => {
     // response.statusCode, response.headers, response.body
     console.log(response.body);
     try {
-        const result = response.body;
+        const result = JSON.parse(response.body);
         const lateOrLeaveEarlyTimes = result.bo.abnormalAttendanceStatisticDTO.lateOrLeaveEarlyTimes;
         const absenceTimes = result.bo.abnormalAttendanceStatisticDTO.absenceTimes;
         console.log(lateOrLeaveEarlyTimes);
