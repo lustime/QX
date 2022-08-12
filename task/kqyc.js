@@ -32,13 +32,17 @@ const myRequest = {
 $task.fetch(myRequest).then(response => {
     // response.statusCode, response.headers, response.body
     console.log(response.body);
-    const result = response.body;
-    const lateOrLeaveEarlyTimes = result.bo.abnormalAttendanceStatisticDTO.lateOrLeaveEarlyTimes;
-    const absenceTimes = result.bo.abnormalAttendanceStatisticDTO.absenceTimes;
-    console.log(lateOrLeaveEarlyTimes);
-    console.log(absenceTimes);
-    const msg_all = "缺席:" + absenceTimes + "次;" + "迟到早退:" + lateOrLeaveEarlyTimes + "次";
-    $notify("考勤异常", "", msg_all); // Success!
+    try {
+        const result = response.body;
+        const lateOrLeaveEarlyTimes = result.bo.abnormalAttendanceStatisticDTO.lateOrLeaveEarlyTimes;
+        const absenceTimes = result.bo.abnormalAttendanceStatisticDTO.absenceTimes;
+        console.log(lateOrLeaveEarlyTimes);
+        console.log(absenceTimes);
+        const msg_all = "缺席:" + absenceTimes + "次;" + "迟到早退:" + lateOrLeaveEarlyTimes + "次";
+        $notify("考勤异常", "", msg_all); // Success!
+    } catch (eor) {
+        console.log(eor)
+    }
     $done();
 }, reason => {
     // reason.error
